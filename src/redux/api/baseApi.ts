@@ -1,3 +1,4 @@
+import type { IBook } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
@@ -17,7 +18,50 @@ export const baseApi = createApi({
       }) =>
         `/books?page=${page}&limit=${limit}&sort=${sort}&sortBy=${sortBy}&filter=${filter}`,
     }),
+
+    //create a new book
+
+    createBook: builder.mutation({
+      query: (bookData) => ({
+        url: "/books",
+        method: "POST",
+        body: bookData,
+      }),
+    }),
+
+    // getting a single book
+    getBook: builder.query({
+      query: (bookId) => ({
+        url: `/books/${bookId}`,
+        method: "GET",
+      }),
+    }),
+
+    // updating a book
+    updateBook: builder.mutation<
+      IBook,
+      { bookId: string; bookData: Partial<IBook> }
+    >({
+      query: ({ bookId, bookData }) => ({
+        url: `/books/${bookId}`,
+        method: "PATCH",
+        body: bookData,
+      }),
+    }),
+
+    // deleting a book
+    deleteBook: builder.mutation({
+      query: (bookId) => ({
+        url: `/books/${bookId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetBooksQuery } = baseApi;
+export const {
+  useGetBooksQuery,
+  useCreateBookMutation,
+  useGetBookQuery,
+  useUpdateBookMutation,
+} = baseApi;
