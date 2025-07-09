@@ -1,11 +1,9 @@
-import React from "react";
-import { Button } from "./components/ui/button";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
     <div>
-      <h1>Welcome to the library management system</h1>
-      <Button>Click Me</Button>
+      <Navbar />
     </div>
   );
 }
