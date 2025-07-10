@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Loader from "@/components/Loader";
 
 const Books = () => {
   const [page, setPage] = useState(1);
@@ -44,7 +45,7 @@ const Books = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-[100vh]">
-        <h3>Loading....</h3>
+        <Loader />
       </div>
     );
   }

@@ -31,6 +31,7 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 
 type TBorrowForm = Omit<IBorrow, "book">;
 
@@ -89,7 +90,7 @@ const ModalBorrowBook = ({ bookId, open, onOpenChange }: BookModalProps) => {
 
         {isLoading || !book ? (
           <div className="flex justify-center items-center h-[100vh]">
-            <h3>Loading please wait...</h3>
+            <Loader />
           </div>
         ) : (
           <Form {...form}>

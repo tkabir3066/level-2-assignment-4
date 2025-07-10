@@ -28,6 +28,7 @@ import { useGetBookQuery, useUpdateBookMutation } from "@/redux/api/baseApi";
 import { useEffect } from "react";
 import type { BookModalProps } from "@/types";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 
 const ModalBookUpdate = ({ bookId, open, onOpenChange }: BookModalProps) => {
   //   console.log(bookId);
@@ -58,8 +59,7 @@ const ModalBookUpdate = ({ bookId, open, onOpenChange }: BookModalProps) => {
       copies: book?.copies,
     },
   });
-  // This runs before book is loaded ⇒ values are undefined.
-  // Fix: Use reset() to populate values after fetch
+
   useEffect(() => {
     if (book) {
       form.reset({
@@ -77,18 +77,14 @@ const ModalBookUpdate = ({ bookId, open, onOpenChange }: BookModalProps) => {
   if (isUpdating) {
     return (
       <div className="flex justify-center items-center h-[100vh]">
-        <h3>Updating....</h3>
+        <Loader />
       </div>
     );
   }
 
-  //   form.reset() is the correct way to update values after the form has been initialized.
-
   const onSubmit: SubmitHandler<FieldValues> = async (formData) => {
     if (!bookId) return;
     try {
-      //   const payload = { bookId, bookData: formData };
-      //   const res = await updateBook(payload).unwrap();
       await updateBook({ bookId, bookData: formData }).unwrap();
       onOpenChange(false);
       toast.success("Book Updated successfully");

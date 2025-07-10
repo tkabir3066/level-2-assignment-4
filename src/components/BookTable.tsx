@@ -80,7 +80,7 @@ const BookTable = ({ books }: { books: IBook[] }) => {
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-3">
-                  {/* Edit with tooltip */}
+                  {/* Edit book using tooltip */}
                   <Tooltip>
                     <TooltipTrigger>
                       <Edit
@@ -110,7 +110,7 @@ const BookTable = ({ books }: { books: IBook[] }) => {
                     <AlertDialogContent>
                       <AlertDialogHeader>
                         <AlertDialogTitle>
-                          Are you absolutely sure?
+                          Are you sure to delete?
                         </AlertDialogTitle>
                         <AlertDialogDescription>
                           This action cannot be undone. This will permanently
@@ -135,7 +135,7 @@ const BookTable = ({ books }: { books: IBook[] }) => {
                     </AlertDialogContent>
                   </AlertDialog>
 
-                  {/* View/Details with tooltip */}
+                  {/* View/Details i.e description with tooltip */}
                   <Tooltip>
                     <TooltipTrigger>
                       <BookUser
