@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router";
 import { ModeToggle } from "../mode-toggle";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "../../assets/icons8-books-96.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,10 @@ const Navbar = () => {
           to="/"
           className="text-xl font-bold text-gray-900 dark:text-white"
         >
-          📚 Library
+          <div className="flex justify-start items-center">
+            <img src={logo} alt="logo" width={60} height={30} />{" "}
+            <div> LibraTrack</div>
+          </div>
         </Link>
 
         {/* Nav for  Desktop */}
