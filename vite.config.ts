@@ -11,4 +11,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Example: splitting vendor packages
+          react: ["react", "react-dom"],
+          ui: ["@shadcn/ui"],
+        },
+      },
+    },
+  },
 });
