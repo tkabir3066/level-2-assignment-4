@@ -16,3 +16,15 @@ export interface IBook {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface BookModalProps {
+  bookId: string;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export interface IBorrow {
+  book: string;
+  quantity: number;
+  dueDate: Date;
+}

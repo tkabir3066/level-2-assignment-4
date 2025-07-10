@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://level-2-assignment-3-iwyg.vercel.app/api",
+    baseUrl: "https://library-management-system-xi-cyan.vercel.app/api",
   }),
   endpoints: (builder) => ({
     // get all books
@@ -60,7 +60,7 @@ export const baseApi = createApi({
     // borrowing a book
     borrowBook: builder.mutation({
       query: (bookData) => ({
-        url: "/borrow",
+        url: "/borrows",
         method: "POST",
         body: bookData,
       }),
@@ -68,7 +68,7 @@ export const baseApi = createApi({
 
     //get summary
     getBorrowSummary: builder.query({
-      query: () => "/borrow",
+      query: () => "/borrows",
     }),
   }),
 });
