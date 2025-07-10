@@ -22,7 +22,7 @@ It allows users to:
 
 ## 🌐 Live Preview
 
-👉 [Live Frontend Site]()
+👉 [Live Frontend Link](https://react-redux-library-management.vercel.app/)
 
 ---
 
@@ -73,7 +73,7 @@ It allows users to:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/library-frontend.git
+git clone https://github.com/tkabir3066/level-2-assignment-4.git
 cd library-frontend
 
 # 2. Install dependencies
