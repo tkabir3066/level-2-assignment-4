@@ -6,6 +6,7 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://library-management-system-xi-cyan.vercel.app/api",
   }),
+  tagTypes: ["books", "borrow"],
   endpoints: (builder) => ({
     // get all books
     getBooks: builder.query({
@@ -17,6 +18,7 @@ export const baseApi = createApi({
         filter = "",
       }) =>
         `/books?page=${page}&limit=${limit}&sort=${sort}&sortBy=${sortBy}&filter=${filter}`,
+      providesTags: ["books"],
     }),
 
     //create a new book
@@ -27,6 +29,7 @@ export const baseApi = createApi({
         method: "POST",
         body: bookData,
       }),
+      invalidatesTags: ["books"],
     }),
 
     // getting a single book
@@ -47,6 +50,7 @@ export const baseApi = createApi({
         method: "PATCH",
         body: bookData,
       }),
+      invalidatesTags: ["books"],
     }),
 
     // deleting a book
@@ -55,20 +59,23 @@ export const baseApi = createApi({
         url: `/books/${bookId}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["books"],
     }),
 
     // borrowing a book
     borrowBook: builder.mutation({
       query: (bookData) => ({
-        url: "/borrows",
+        url: "/borrow",
         method: "POST",
         body: bookData,
       }),
+      invalidatesTags: ["borrow", "books"],
     }),
 
     //get summary
     getBorrowSummary: builder.query({
-      query: () => "/borrows",
+      query: () => "/borrow",
+      providesTags: ["borrow"],
     }),
   }),
 });
