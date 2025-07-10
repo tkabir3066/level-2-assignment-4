@@ -12,14 +12,6 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Example: splitting vendor packages
-          react: ["react", "react-dom"],
-          ui: ["@shadcn/ui"],
-        },
-      },
-    },
+    chunkSizeWarningLimit: 1000, // default is 500 (in kB)
   },
 });
